@@ -1,5 +1,14 @@
-GPU_NUMBER=6
-MODEL_NAME='bert-base-uncased'
+set -e
+if [[ $# -lt 1 ]] ; then
+    echo "usage: $0 MODEL_NAME [GPU_NUMBER]"
+    exit
+fi
+MODEL_NAME=$1
+if [[ $# -eq 2 ]] ; then
+    GPU_NUMBER=$2
+else
+    GPU_NUMBER=0
+fi
 LOWER_CASE='True'
 BATCH_SIZE=8
 ACCUMULATION_STEPS=1
